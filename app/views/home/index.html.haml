@@ -1,0 +1,7 @@
+.page-header
+  %h2 Recent Incidents
+
+.row-fluid
+
+  - @incidents.each do |incident|
+    = render incident

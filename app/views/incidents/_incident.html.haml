@@ -1,0 +1,47 @@
+.panel.panel-default
+  .panel-heading
+    = incident.title
+  .panel-body
+    .row-fluid
+      %p
+        = incident.details
+      .row-fluid
+        .col-md-6
+          - if incident.men_wonded.present?
+            %h6
+              Men Wonded
+              %span.label.label-warning
+                = incident.men_wonded
+
+          - if incident.women_wonded.present?
+            %h6
+              Women Wonded
+              %span.label.label-warning
+                = incident.women_wonded
+
+          - if incident.minor_wonded.present?
+            %h6
+              Minor Wonded
+              %span.label.label-warning
+                = incident.minor_wonded
+
+        .col-md-6
+          - if incident.men_dead.present?
+            %h6
+              Men Died
+              %span.label.label-danger
+                = incident.men_dead
+
+          - if incident.women_dead.present?
+            %h6
+              Women Died
+              %span.label.label-danger
+                = incident.women_dead
+
+
+          - if incident.minor_dead.present?
+            %h6
+              Minor Died
+              %span.label.label-danger
+                = incident.minor_dead
+
