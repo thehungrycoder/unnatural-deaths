@@ -1,0 +1,80 @@
+.page-header
+  %h2 Report an incident
+
+.row-fluid
+  = form_for(@incident) do |f|
+    - if @incident.errors.any?
+      .alert.alert-danger
+        - @incident.errors.full_messages.each do |msg|
+          %p
+            = msg
+    .col-md-6
+      %fieldset
+        %legend Basic Info
+
+        .form-group
+          = f.label :incident_type
+          = f.select :incident_type, Incident.incident_types, class: 'form-control'
+
+        .form-group
+          = f.label :title
+          = f.text_field :title, class: 'form-control'
+
+
+        .form-group
+          = f.label :details, 'Description'
+          = f.text_area :details, class: 'form-control', rows: 3
+
+    .col-md-6
+      %fieldset
+        %legend More
+        .form-group
+          = f.label :links, 'References'
+          = f.text_area :links, class: 'form-control', rows: 3
+
+        .form-group
+          = f.label :total_victims
+          = f.text_field :total_victims, class: 'form-control'
+
+        .form-group
+          = f.label :district_id
+          = f.select :district_id, options_from_collection_for_select(District.all, :id, :name), class: 'form-control'
+
+    .col-md-6
+      %fieldset
+        %legend
+          Consequences (Wonds))
+
+        .form-group
+          = f.label :men_wonded
+          = f.text_field :men_wonded, class: 'form-control'
+
+
+        .form-group
+          = f.label :women_wonded
+          = f.text_field :women_wonded, class: 'form-control'
+
+        .form-group
+          = f.label :minor_wonded
+          = f.text_field :minor_wonded, class: 'form-control'
+
+
+    .col-md-6
+      %fieldset
+        %legend
+          Consequences (Death))
+
+        .form-group
+          = f.label :men_dead
+          = f.text_field :men_dead, class: 'form-control'
+
+
+        .form-group
+          = f.label :women_dead
+          = f.text_field :women_dead, class: 'form-control'
+
+        .form-group
+          = f.label :minor_dead
+          = f.text_field :minor_dead, class: 'form-control'
+
+    = f.submit 'Submit Incident for Review'

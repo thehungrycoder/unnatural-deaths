@@ -17,8 +17,8 @@ class CreateIncidents < ActiveRecord::Migration
       t.string :location
       t.text :links
 
-      t.boolean :approved, default: false
       t.references :approved_by #AdminUser
+      t.datetime :approved_at
 
       t.timestamps null: false
     end

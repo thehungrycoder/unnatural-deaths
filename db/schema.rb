@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(version: 20150117090507) do
     t.integer  "district_id"
     t.string   "location"
     t.text     "links"
-    t.boolean  "approved",       default: false
     t.integer  "approved_by_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "approved_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "incidents", ["district_id"], name: "index_incidents_on_district_id"
