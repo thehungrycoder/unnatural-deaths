@@ -14,12 +14,12 @@ gem 'haml-rails'
 
 group :production do
   gem 'unicorn'
-  # gem 'pg'
 end
 
+gem 'pg'
+
 group :development do
-  gem 'sqlite3'
-  gem 'spring',        group: :development
+  gem 'spring'
 end
 
 gem 'activeadmin', github: 'activeadmin'
