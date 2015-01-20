@@ -29,3 +29,4 @@ gem "twitter-bootstrap-rails"
 gem 'devise'
 gem 'lazy_high_charts'
 gem 'kaminari'
+gem "recaptcha", :require => "recaptcha/rails"
