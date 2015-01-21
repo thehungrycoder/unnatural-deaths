@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require '../../../vendor/assets/select2/js/select2.js'
+//= require '../../../vendor/assets/javascripts/angular.js'
 //= require_tree .

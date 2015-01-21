@@ -1,7 +1,7 @@
 .page-header
   %h2 Report an incident
 
-.row-fluid
+.row-fluid{:'ng-controller' => 'newIncidentController'}
   = form_for(@incident) do |f|
     - if @incident.errors.any?
       .alert.alert-danger
@@ -53,10 +53,15 @@
                 = f.date_select :happened_on, start_year: 2015, end_year: 2015
 
             .col-md-5
-              .form-group
+              %p{:'ng-if' => 'hideAddTime' }
+                = link_to 'Add Time', 'javascript:void(0)',  :'ng-click' => 'toggleAddTime()'
+
+              .form-group{:'ng-if' => '!hideAddTime'}
                 = f.label :happened_at, 'Incident Time'
                 = f.time_select :happened_at, ampm: true
-
+                %span
+                  &nbsp;&nbsp;
+                  = link_to 'X', 'javascript:void(0)', :'ng-click' => 'toggleAddTime()', title: 'Do not add time'
 
 
       .col-md-6
@@ -74,21 +79,32 @@
               %legend Total
               .form-group
                 = f.label :total_victims, 'Victims'
-                = f.text_field :total_victims, class: 'form-control '
+                %span.small.pull-right
+                  = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'total_victims')"))
+                = f.text_field :total_victims, class: 'form-control'
           .col-md-5
             %fieldset
               %legend Wounds
               .col-xs-4
                 .form-group
                   = f.label :men_wounded, 'Men'
+                  %span.small.pull-right
+                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'men_wounded')"))
+
                   = f.text_field :men_wounded, class: 'form-control'
               .col-xs-4
                 .form-group
                   = f.label :women_wounded, 'Women'
+                  %span.small.pull-right
+                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'women_wounded')"))
+
                   = f.text_field :women_wounded, class: 'form-control'
               .col-xs-4
                 .form-group
                   = f.label :minor_wounded, 'Minors'
+                  %span.small.pull-right
+                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'minor_wounded')"))
+
                   = f.text_field :minor_wounded, class: 'form-control'
 
           .col-md-5
@@ -97,17 +113,38 @@
               .col-xs-4
                 .form-group
                   = f.label :men_dead, 'Men'
+                  %span.small.pull-right
+                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'men_dead')"))
+
                   = f.text_field :men_dead, class: 'form-control'
               .col-xs-4
                 .form-group
                   = f.label :women_dead, 'Women'
+                  %span.small.pull-right
+                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'women_dead')"))
+
                   = f.text_field :women_dead, class: 'form-control'
 
               .col-xs-4
                 .form-group
                   = f.label :minor_dead, 'Minors'
+                  %span.small.pull-right
+                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'minor_dead')"))
+
                   = f.text_field :minor_dead, class: 'form-control'
 
       .row-fluid
         .col-md-12
+          %fieldset
+            %legend Optional
+
+            .col-xs-6
+              .form-group
+                = f.label :notes, 'Notes for Reviewer'
+                = f.text_area :notes, class: 'form-control', rows: 3
+        .clearfix
+
+      .row-fluid
+        .col-md-12
           = f.submit 'Submit Incident for Review', :class => 'btn btn-primary'
+        .clearfix
