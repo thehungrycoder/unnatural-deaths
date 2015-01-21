@@ -8,6 +8,7 @@ class Incident < ActiveRecord::Base
   scope :approved, -> { where.not(:approved_at => nil) }
 
   validates_presence_of :title, :incident_type, :district_id, :references
+  validate :casualties
 
 
   def self.incident_types
@@ -25,5 +26,12 @@ class Incident < ActiveRecord::Base
 
   def approved?
     !!self.approved_at.present?
+  end
+
+  private
+  def casualties
+    if [self.men_dead, self.women_dead, self.minor_dead].reject(&:blank?).size == 0
+      errors[:casualties] << ("all deaths count can't be blank")
+    end
   end
 end

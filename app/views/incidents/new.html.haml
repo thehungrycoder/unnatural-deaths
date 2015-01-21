@@ -79,8 +79,8 @@
               %legend Total
               .form-group
                 = f.label :total_victims, 'Victims'
-                %span.small.pull-right
-                  = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'total_victims')"))
+                -#%span.small.pull-right
+                -#  = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'total_victims')"))
                 = f.text_field :total_victims, class: 'form-control'
           .col-md-5
             %fieldset
@@ -88,22 +88,22 @@
               .col-xs-4
                 .form-group
                   = f.label :men_wounded, 'Men'
-                  %span.small.pull-right
-                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'men_wounded')"))
+                  -#%span.small.pull-right
+                  -#  = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'men_wounded')"))
 
                   = f.text_field :men_wounded, class: 'form-control'
               .col-xs-4
                 .form-group
                   = f.label :women_wounded, 'Women'
-                  %span.small.pull-right
-                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'women_wounded')"))
+                  -#%span.small.pull-right
+                  -#  = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'women_wounded')"))
 
                   = f.text_field :women_wounded, class: 'form-control'
               .col-xs-4
                 .form-group
                   = f.label :minor_wounded, 'Minors'
-                  %span.small.pull-right
-                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'minor_wounded')"))
+                  -#%span.small.pull-right
+                  -#  = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'minor_wounded')"))
 
                   = f.text_field :minor_wounded, class: 'form-control'
 
@@ -113,23 +113,23 @@
               .col-xs-4
                 .form-group
                   = f.label :men_dead, 'Men'
-                  %span.small.pull-right
-                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'men_dead')"))
+                  -#%span.small.pull-right
+                  -#  = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'men_dead')"))
 
                   = f.text_field :men_dead, class: 'form-control'
               .col-xs-4
                 .form-group
                   = f.label :women_dead, 'Women'
-                  %span.small.pull-right
-                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'women_dead')"))
+                  -#%span.small.pull-right
+                  -#  = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'women_dead')"))
 
                   = f.text_field :women_dead, class: 'form-control'
 
               .col-xs-4
                 .form-group
                   = f.label :minor_dead, 'Minors'
-                  %span.small.pull-right
-                    = content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'minor_dead')"))
+                  -#%span.small.pull-right
+                    -#= content_tag(:label, content_tag(:input, ' Unknown', type: :checkbox, :'ng-click' => "toggleUnknown($event, 'minor_dead')"))
 
                   = f.text_field :minor_dead, class: 'form-control'
 
@@ -140,7 +140,7 @@
 
             .col-xs-6
               .form-group
-                = f.label :notes, 'Notes for Reviewer'
+                = f.label :notes, 'Notes to Reviewer'
                 = f.text_area :notes, class: 'form-control', rows: 3
         .clearfix
 
