@@ -1,8 +1,10 @@
 class CreateDistricts < ActiveRecord::Migration
   def migrate(direction)
     super
-    # Create a default user
-    require Rails.root.join('db', 'seed', 'districts.rb')
+    if direction == :up
+      # Create a default user
+      require Rails.root.join('db', 'seed', 'districts.rb')
+    end
   end
 
 

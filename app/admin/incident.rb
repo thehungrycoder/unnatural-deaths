@@ -14,8 +14,8 @@ ActiveAdmin.register Incident do
   #   permitted
   # end
 
-  permit_params :title, :details, :incident_type, :references, :men_dead, :minor_dead, :women_dead, :men_wonded,
-                :minor_wonded, :women_wonded, :district, :location, :total_victims
+  permit_params :title, :details, :incident_type, :references, :men_dead, :minor_dead, :women_dead, :men_wounded,
+                :minor_wounded, :women_wounded, :district, :location, :total_victims, :happened_on, :happened_at
   form do |f|
     inputs 'Incident Info' do
       input :title
@@ -26,12 +26,12 @@ ActiveAdmin.register Incident do
       input :tags
     end
 
-    inputs 'Wound' do
-      input :men_wonded
-      input :women_wonded
-      input :minor_wonded
+    inputs 'Wounds' do
+      input :men_wounded
+      input :women_wounded
+      input :minor_wounded
     end
-    inputs 'Dead' do
+    inputs 'Deaths' do
       input :men_dead
       input :women_dead
       input :minor_dead
@@ -41,11 +41,18 @@ ActiveAdmin.register Incident do
       input :district, as: :select, collection: District.all
       input :location
     end
+
+    inputs 'When' do
+      input :happened_on
+      input :happened_at
+    end
     actions
   end
 
 
   index do
+    selectable_column
+    # id_column
     column :title do |obj|
       link_to obj.title, [:admin, obj]
     end

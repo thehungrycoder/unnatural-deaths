@@ -21,7 +21,8 @@ class IncidentsController < ApplicationController
 
   private
   def incident_params
-    params[:incident].permit(:title, :details, :incident_type, :total_victims, :men_wonded, :women_wonded, :minor_wonded,
-                             :men_dead, :women_dead, :minor_dead, :district_id, :location, :references)
+    params[:incident].permit(:title, :details, :incident_type, :total_victims, :men_wounded, :women_wounded, :minor_wounded,
+                             :men_dead, :women_dead, :minor_dead, :district_id, :location, :references, :happened_on,
+                              :happened_at)
   end
 end

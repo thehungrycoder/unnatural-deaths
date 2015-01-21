@@ -6,9 +6,9 @@ class CreateIncidents < ActiveRecord::Migration
       t.string :incident_type
       t.integer :total_victims
 
-      t.integer :men_wonded
-      t.integer :women_wonded
-      t.integer :minor_wonded
+      t.integer :men_wounded
+      t.integer :women_wounded
+      t.integer :minor_wounded
 
       t.integer :men_dead
       t.integer :women_dead
@@ -18,6 +18,8 @@ class CreateIncidents < ActiveRecord::Migration
       t.text :references
       t.text :notes #to reviewer
 
+      t.date :happened_on
+      t.time :happened_at
       t.references :approved_by #AdminUser
       t.datetime :approved_at
 

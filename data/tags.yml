@@ -1,0 +1,23 @@
+---
+Accidents:
+  - Road Accidents
+  - River Accidents
+  - Train Accidents
+  - Air Accidents
+  - Killed at Work
+  - Negligence 
+
+Homecide:
+  - Murder
+  - Manslaughter
+
+Abortion:
+  - Deliberate Abortion
+  - Accidental Abortion
+
+Suicide:
+  - Autocide
+  - Medicide
+  - Murder-suicide
+  - Self-immolation
+  - Cop-induced

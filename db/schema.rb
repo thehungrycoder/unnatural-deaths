@@ -47,15 +47,18 @@ ActiveRecord::Schema.define(version: 20150121061534) do
     t.text     "details"
     t.string   "incident_type"
     t.integer  "total_victims"
-    t.integer  "men_wonded"
-    t.integer  "women_wonded"
-    t.integer  "minor_wonded"
+    t.integer  "men_wounded"
+    t.integer  "women_wounded"
+    t.integer  "minor_wounded"
     t.integer  "men_dead"
     t.integer  "women_dead"
     t.integer  "minor_dead"
     t.integer  "district_id"
     t.string   "location"
     t.text     "references"
+    t.text     "notes"
+    t.date     "happened_on"
+    t.time     "happened_at"
     t.integer  "approved_by_id"
     t.datetime "approved_at"
     t.datetime "created_at",     null: false
@@ -73,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150121061534) do
   add_index "incidents_tags", ["tag_id"], name: "index_incidents_tags_on_tag_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
+    t.string   "category"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

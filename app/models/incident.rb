@@ -5,15 +5,15 @@ class Incident < ActiveRecord::Base
   has_and_belongs_to_many :tags
   accepts_nested_attributes_for :tags
 
-  scope :approved, -> { where.not(:approved_at => nil)}
+  scope :approved, -> { where.not(:approved_at => nil) }
 
-  validates_presence_of :title, :incident_type, :references, :district_id
+  validates_presence_of :title, :incident_type, :district_id, :references
+
 
   def self.incident_types
     [
         'Accidents',
         'Homicide',
-        'Political Violence',
         'Suicide',
         'Misadventure',
         'Terrorism',

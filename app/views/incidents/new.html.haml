@@ -17,13 +17,15 @@
               .form-group
                 = f.label :incident_type
                 %br
-                = f.select :incident_type, Incident.incident_types, class: 'form-control'
+                = f.select :incident_type, Incident.incident_types,
+                  { prompt: 'Please select incident type'}, {class: 'form-control'}
 
             .col-md-6
               .form-group
                 = f.label :district_id
                 %br
-                = f.select :district_id, options_from_collection_for_select(District.all, :id, :name), class: 'form-control'
+                = f.select :district_id, options_from_collection_for_select(District.all, :id, :name),
+                  { :prompt => 'Please select district'}, {class: 'form-control'}
 
           .row-fluid
             .col-md-12
@@ -39,17 +41,23 @@
                 = f.label :references
                 = f.text_area :references, class: 'form-control', rows: 3
           .row-fluid
-            .form-group
-              = f.label :tags
-              = f.collection_select :tags, Tag.all, :id, :name, {}, { class: 'form-control', id: 'tags_selector', multiple: true }
-            -#= f.fields_for :tags, @incident.tags.build do |t|
-            -#  .col-md-12
-            -#    .form-group
-            -#      = t.label :name, 'Tags'
-            -#      %br
-            -#      -#= t.select :name, options_from_collection_for_select(Tag.all, :id, :name), {},
-            -#      -#  { class: 'form-control', id: 'tags_selector', multiple: true }
-            -#      = t
+            .col-md-12
+              .form-group
+                = f.label :tags
+                = f.collection_select :tags, Tag.all, :id, :name, {}, { class: 'form-control', id: 'tags_selector', multiple: true }
+
+          .row-fluid
+            .col-md-7
+              .form-group
+                = f.label :happened_on, 'Incident Date'
+                = f.date_select :happened_on, start_year: 2015, end_year: 2015
+
+            .col-md-5
+              .form-group
+                = f.label :happened_at, 'Incident Time'
+                = f.time_select :happened_at, ampm: true
+
+
 
       .col-md-6
         -#Right Pane
@@ -69,23 +77,23 @@
                 = f.text_field :total_victims, class: 'form-control '
           .col-md-5
             %fieldset
-              %legend Wonds
+              %legend Wounds
               .col-xs-4
                 .form-group
-                  = f.label :men_wonded, 'Men'
-                  = f.text_field :men_wonded, class: 'form-control'
+                  = f.label :men_wounded, 'Men'
+                  = f.text_field :men_wounded, class: 'form-control'
               .col-xs-4
                 .form-group
-                  = f.label :women_wonded, 'Women'
-                  = f.text_field :women_wonded, class: 'form-control'
+                  = f.label :women_wounded, 'Women'
+                  = f.text_field :women_wounded, class: 'form-control'
               .col-xs-4
                 .form-group
-                  = f.label :minor_wonded, 'Minors'
-                  = f.text_field :minor_wonded, class: 'form-control'
+                  = f.label :minor_wounded, 'Minors'
+                  = f.text_field :minor_wounded, class: 'form-control'
 
           .col-md-5
             %fieldset
-              %legend Death
+              %legend Deaths
               .col-xs-4
                 .form-group
                   = f.label :men_dead, 'Men'
