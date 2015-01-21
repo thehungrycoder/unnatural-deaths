@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150117090507) do
+ActiveRecord::Schema.define(version: 20150121061534) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,8 +31,8 @@ ActiveRecord::Schema.define(version: 20150117090507) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
@@ -52,13 +55,28 @@ ActiveRecord::Schema.define(version: 20150117090507) do
     t.integer  "minor_dead"
     t.integer  "district_id"
     t.string   "location"
-    t.text     "links"
+    t.text     "references"
     t.integer  "approved_by_id"
     t.datetime "approved_at"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "incidents", ["district_id"], name: "index_incidents_on_district_id"
+  add_index "incidents", ["district_id"], name: "index_incidents_on_district_id", using: :btree
 
+  create_table "incidents_tags", force: :cascade do |t|
+    t.integer "incident_id"
+    t.integer "tag_id"
+  end
+
+  add_index "incidents_tags", ["incident_id"], name: "index_incidents_tags_on_incident_id", using: :btree
+  add_index "incidents_tags", ["tag_id"], name: "index_incidents_tags_on_tag_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "incidents", "districts"
 end

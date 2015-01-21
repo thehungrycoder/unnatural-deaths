@@ -15,7 +15,8 @@ class CreateIncidents < ActiveRecord::Migration
       t.integer :minor_dead
       t.references :district, index: true
       t.string :location
-      t.text :links
+      t.text :references
+      t.text :notes #to reviewer
 
       t.references :approved_by #AdminUser
       t.datetime :approved_at

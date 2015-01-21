@@ -30,3 +30,5 @@ gem 'devise'
 gem 'lazy_high_charts'
 gem 'kaminari'
 gem "recaptcha", :require => "recaptcha/rails"
+# gem 'acts-as-taggable-on', '~> 3.4'
+# gem 'carrierwave'

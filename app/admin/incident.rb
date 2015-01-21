@@ -14,15 +14,16 @@ ActiveAdmin.register Incident do
   #   permitted
   # end
 
-  permit_params :title, :details, :incident_type, :links, :men_dead, :minor_dead, :women_dead, :men_wonded,
+  permit_params :title, :details, :incident_type, :references, :men_dead, :minor_dead, :women_dead, :men_wonded,
                 :minor_wonded, :women_wonded, :district, :location, :total_victims
   form do |f|
     inputs 'Incident Info' do
       input :title
       input :details
       input :incident_type, as: :select, collection: Incident.incident_types
-      input :links
+      input :references
       input :total_victims
+      input :tags
     end
 
     inputs 'Wound' do
@@ -60,6 +61,14 @@ ActiveAdmin.register Incident do
 
     actions
   end
+
+  # show do
+  #   panel 'Basic' do
+  #     row :title
+  #     row :details
+  #     # row :tags
+  #   end
+  # end
 
   member_action :approve, :method => [:patch] do
     incident = Incident.find(params[:id])

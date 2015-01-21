@@ -9,6 +9,9 @@ class IncidentsController < ApplicationController
 
   def create
     @incident = Incident.new incident_params
+    #include tags
+    @incident.tags = Tag.where(id: params[:incident][:tags].select(&:present?))
+
     if @incident.save
       redirect_to :incidents, :notice => 'Incident submitted for review!'
     else
@@ -19,7 +22,6 @@ class IncidentsController < ApplicationController
   private
   def incident_params
     params[:incident].permit(:title, :details, :incident_type, :total_victims, :men_wonded, :women_wonded, :minor_wonded,
-                             :men_dead, :women_dead, :minor_dead, :district_id, :location, :links
-    )
+                             :men_dead, :women_dead, :minor_dead, :district_id, :location, :references)
   end
 end
