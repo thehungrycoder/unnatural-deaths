@@ -12,10 +12,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'haml-rails'
 
-group :production do
-  gem 'unicorn'
-  gem 'rails_serve_static_assets'
-end
+gem 'unicorn'
 
 gem 'pg'
 
