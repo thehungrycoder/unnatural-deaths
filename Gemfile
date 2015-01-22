@@ -12,7 +12,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'haml-rails'
 
-gem 'unicorn'
+  gem 'unicorn'
+  gem 'rails_serve_static_assets'
 
 gem 'pg'
 
