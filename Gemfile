@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -14,6 +14,7 @@ gem 'haml-rails'
 
 group :production do
   gem 'unicorn'
+  gem 'rails_serve_static_assets'
 end
 
 gem 'pg'
@@ -30,5 +31,5 @@ gem 'devise'
 gem 'lazy_high_charts'
 gem 'kaminari'
 gem "recaptcha", :require => "recaptcha/rails"
-# gem 'acts-as-taggable-on', '~> 3.4'
-# gem 'carrierwave'
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'carrierwave'
